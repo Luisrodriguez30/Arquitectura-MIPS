@@ -3,7 +3,7 @@ module ALUCTRL (
     input [5:0]func,
     output reg[3:0]SelAlu
 );
-    always @(AluOp) begin
+    always @(*) begin
         case (AluOp)
             3'b010 : begin
                 case (func)

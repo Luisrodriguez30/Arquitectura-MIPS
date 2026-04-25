@@ -21,6 +21,7 @@ module BR (
         mem[8] = 32'd18;
         mem[9] = 32'd19;
         mem[10] = 32'd20;
+        mem[11] = 32'd21;
     end
     always @* begin
         DR1 = mem[AR1];
