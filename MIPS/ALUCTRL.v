@@ -15,6 +15,9 @@ module ALUCTRL (
                     6'b100111 : SelAlu = 4'b1100;
                 endcase
             end
+            3'b000 : begin
+                SelAlu = 4'b0010;
+            end
         endcase
     end
 endmodule

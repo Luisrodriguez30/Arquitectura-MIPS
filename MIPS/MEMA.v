@@ -8,10 +8,10 @@ module MEMA (
     reg [31:0]mem[0:31];
     always @* begin
         if (WE) begin
-            mem[DIR] <= DATA_IN;
+            mem[DIR] = DATA_IN;
         end
         else if (RE) begin
-            DATA_OUT <= mem[DIR];
+            DATA_OUT = mem[DIR];
         end
     end
 endmodule
