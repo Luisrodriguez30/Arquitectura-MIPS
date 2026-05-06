@@ -32,7 +32,7 @@ module DPTR (
     Mux2a1 muxalu(.mem(C9), .alu(C1), .UCctl(CAS), .R(C8));
     SignExtend SignExt(.Inst(InstTR[15:0]), .DataOut(C9));
     ADDER adder1(.A(DIR), .B(32'd4), .R(C10));
-    PC pc1(.CLK(CLK), .CONT(C10), .Inst(DIR));
+    PC pc1(.CLK(CLK), .RESET(RESET), .CONT(C10), .Inst(DIR));
     MEMI mymemi(.dir(DIR), .DSalida(InstTR));
 
 endmodule
