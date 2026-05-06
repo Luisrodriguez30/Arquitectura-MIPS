@@ -3,6 +3,7 @@ module DPTR (
     input RESET
 );
 //wire
+    wire [31:0] InstTR;
     wire [31:0]DIR; // Direccion
     wire [31:0]C1; // DR2
     wire [31:0]C2; // DR1

@@ -1,19 +1,29 @@
 `timescale 1ns/1ns
 module TB_DPTR;
-wire [31:0]InstTR;
-reg [31:0]DIR;
-DPTR mydptr(.InstTR(InstTR));
-MEMI mymemi(.dir(DIR), .DSalida(InstTR));
+reg CLK;
+reg RESET
+DPTR mydptr(.CLK(CLK), .RESET(RESET));
 initial begin
-    #100
-    #100 DIR <= 32'd0;
-    #100 DIR <= 32'd4;
-    #100 DIR <= 32'd8;
-    #100 DIR <= 32'd12;
-    #100 DIR <= 32'd16;
-    #100 DIR <= 32'd20;
-    #100 DIR <= 32'd24;
-    #100 DIR <= 32'd28;
+    #100 RESET <= 1'b0;
+    #100 RESET <= 1'b1;
+    #100 RESET <= 1'b0;
+    #100 CLK <= 1'b0;
+    #100 CLK <= 1'b1;
+    #100 CLK <= 1'b0;
+    #100 CLK <= 1'b1;
+    #100 CLK <= 1'b0;
+    #100 CLK <= 1'b1;
+    #100 CLK <= 1'b0;
+    #100 CLK <= 1'b1;
+    #100 CLK <= 1'b0;
+    #100 CLK <= 1'b1;
+    #100 CLK <= 1'b0;
+    #100 CLK <= 1'b1;
+    #100 CLK <= 1'b0;
+    #100 CLK <= 1'b1;
+    #100 CLK <= 1'b0;
+    #100 CLK <= 1'b1;
+    #100 CLK <= 1'b0;
     #100
     $finish;
 end
