@@ -5,11 +5,9 @@ module PC (
     output reg[31:0]Inst
 );
     always @(posedge CLK or posedge RESET) begin
-        if (RESET) begin
+        if (RESET)
             Inst = 32'b0;
-        end
-        else begin
+        else
         Inst = CONT;
-        end
     end // Decir donde esta el error.
 endmodule
