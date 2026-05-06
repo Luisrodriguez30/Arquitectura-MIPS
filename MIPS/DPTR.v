@@ -1,7 +1,9 @@
 module DPTR (
-    input [31:0]InstTR
+    input CLK,
+    input RESET
 );
 //wire
+    wire [31:0]DIR; // Direccion
     wire [31:0]C1; // DR2
     wire [31:0]C2; // DR1
     wire [31:0]C3; // Result Alu
@@ -11,6 +13,7 @@ module DPTR (
     wire [4:0]C7; //AW
     wire [31:0]C8; //ALU B
     wire [31:0]C9; //SignExtend
+    wire [31:0]C10;
     wire CRD, CRW, CMW, CMR, CMTR, CAS;
     wire [2:0]CA;
 //reg
@@ -27,5 +30,8 @@ module DPTR (
     Mux2a1_5b muxBR(.mem(InstTR[15:11]), .alu(InstTR[20:16]), .UCctl(CRD), .R(C7));
     Mux2a1 muxalu(.mem(C9), .alu(C1), .UCctl(CAS), .R(C8));
     SignExtend SignExt(.Inst(InstTR[15:0]), .DataOut(C9));
+    ADDER adder1(.A(DIR), .B(32'd4), .R(C10));
+    PC pc1(.CLK(CLK), .CONT(C10), .Inst(DIR));
+    MEMI mymemi(.dir(DIR), .DSalida(InstTR));
 
 endmodule
